@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for ZGAB_RAP_C_100ATRAV1'
+define service ZGAB_RAP_UI_100ATRAV1_O4 {
+  expose ZGAB_RAP_C_100ATRAV1;
+}

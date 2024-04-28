@@ -1,0 +1,95 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Viaje',
+    typeNamePlural: 'Viajes',
+    title: {
+      type: #STANDARD,
+      label: 'Viajes del mundo',
+      value: 'TravelID'
+    }
+  }
+}
+@Search.searchable: true
+annotate view ZGAB_I_TRAVEL_R_001 with
+{
+  @UI.facet: [ { id:              'Viaje',
+                  purpose:         #STANDARD,
+                  type:            #IDENTIFICATION_REFERENCE,
+                  label:           'Viajes',
+                  position:        10 } ]
+  /*
+    @UI           : {
+    lineItem      : [{position: 10, importance: #HIGH}],
+    selectionField: [{position: 10 }]
+    }*/
+  @UI: { lineItem:     [ {  position: 20, label: 'Agency', importance: #HIGH } ],
+   identification:[ { position: 10, label: 'Viaje ID' } ],
+   selectionField: [{position: 20  }] }
+  TravelID;
+  /*@UI           : {
+        lineItem      : [{position: 15, importance: #LOW}],
+        selectionField: [{position: 10 }]
+        }*/
+  @UI: { lineItem:     [ {  position: 20, label: 'Agency', importance: #HIGH } ],
+       identification: [ { position: 20 } ],
+       selectionField: [{position: 20  }]
+      }
+  @Consumption.valueHelpDefinition: [{  entity: {name: '/DMO/I_Agency', element: 'AgencyID'}  }]
+  AgencyID;
+  /*@UI           : {
+        lineItem      : [{position: 20, importance: #LOW}],
+      selectionField: [{position: 15 }]
+        }*/
+  @UI: { lineItem:        [ {  position: 30, label: 'Customer', importance: #HIGH  } ]
+         ,identification: [ { position: 30 } ]
+         ,selectionField: [ { position: 30 }]
+        }
+  @Consumption.valueHelpDefinition: [{entity: {name: '/DMO/I_Customer', element: 'CustomerID' }}]
+  CustomerID;
+  /*@UI           : {
+         lineItem      : [{position: 30, importance: #LOW}],
+
+       selectionField: [{position: 10 }]
+         }*/
+  @UI: {  lineItem: [ { position: 40 } ],
+          identification: [ { position: 40 } ],
+          selectionField: [ { position: 40 }]
+        }
+  BeginDate;
+  @UI.lineItem: [{ position: 35 }]
+  Addressee;
+  /*@UI           : {
+        lineItem      : [{position: 40, importance: #LOW}]
+        }
+  */
+  @UI: {  lineItem: [ { position: 50 } ],
+  identification: [ { position: 50 } ]
+  ,selectionField: [ { position: 50 }]
+  }
+  EndDate;
+
+  /*@UI           : {
+        lineItem      : [{position: 50, importance: #LOW}]
+        }*/
+  @UI: { lineItem: [ { position: 60 } ],
+          identification: [ { position: 50 } ]
+         }
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.90
+  TotalPrice;
+
+  @UI           : {
+      lineItem      : [{position: 60, importance: #LOW}]
+
+      }
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.90
+  Memo;
+  @UI           : {
+      lineItem      : [{position: 70, importance: #LOW}],
+      selectionField: [{position: 70 }]
+      }
+  Status;
+
+}
